@@ -24,7 +24,7 @@ public class ExcelManager {
 	private XSSFWorkbook book = null;
 	FileInputStream fsIP = null;
 	
-	public void  buildReport(String fileName, List users, List roles){
+	public void  buildReport(String fileName, List users, List roles, List groups){
 		try{
 			HSSFWorkbook wb = new HSSFWorkbook();
 		    FileOutputStream fileOut = new FileOutputStream(fileName);
@@ -95,6 +95,38 @@ public class ExcelManager {
 					cell.setCellValue(r.permissioEntity);
 					cell = row.createCell(3);
 					cell.setCellValue(r.entity_id);
+			    }
+			    
+			    sheet = workbook.createSheet("Groups");
+				rowIdx = 0;				
+				row = sheet.createRow(rowIdx++);				 				
+				cell = row.createCell(0);
+				cell.setCellValue("ID");
+				cell = row.createCell(1);				
+				cell.setCellValue("Name");
+				cell = row.createCell(2);
+				cell.setCellValue("Description");
+				cell = row.createCell(3);
+				cell.setCellValue("User");
+				cell = row.createCell(4);
+				cell.setCellValue("Role");
+				
+				it = groups.iterator();
+			    while (it.hasNext()) {
+			    	//Map.Entry pairs = (Map.Entry)it.next();
+			    	Group g = (Group)it.next();
+			        //System.out.println(pairs.getKey() + " = " + ((User)(pairs.getValue())).print());
+			    	row = sheet.createRow(rowIdx++);				 				
+					cell = row.createCell(0);
+					cell.setCellValue(g.id);
+					cell = row.createCell(1);				
+					cell.setCellValue(g.name);
+					cell = row.createCell(2);
+					cell.setCellValue(g.description);
+					cell = row.createCell(3);
+					cell.setCellValue(g.userName);
+					cell = row.createCell(4);
+					cell.setCellValue(g.roleName);
 			    }
 				
 				file.close();

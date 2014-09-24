@@ -17,6 +17,7 @@ public class AppDynamicsUsersDetailedReportMain {
 		ArrayList groups = new ArrayList();
 		
 		DBHelper dbh = new DBHelper();
+		System.out.println("AppDynamics Users Detailed Report by Jose R Bronet");
 		System.out.println("Connecting to DB");
 		dbh.connectDB(args[0], args[1], args[2],args[3]);
 		System.out.println("Conneced to DB");

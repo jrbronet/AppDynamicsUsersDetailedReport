@@ -37,7 +37,7 @@ public class DBHelper {
 		try{
 			Statement statement = conn.createStatement();
 			//ResultSet rs = statement.executeQuery("select * from user");
-			ResultSet rs = statement.executeQuery("select * from user_group, user, user_user_group_mapping, user_group_account_role_mapping, account_role, account where user_group.id = user_user_group_mapping.user_group_id and user_user_group_mapping.user_id = user.id and user_group_account_role_mapping.account_role_id = account_role.id and user_group_account_role_mapping.user_group_id = user_group.id and account.id = account_role.account_id and account.name = '"+this.tenant+"' order by user_group.name, user.name ASC;");			
+			ResultSet rs = statement.executeQuery("select * from user,user_account_role_mapping,account_role,account where user.id=user_account_role_mapping.user_id and account_role.id = user_account_role_mapping.account_role_id and account_role.account_id = account.id and account.name = '"+this.tenant+"' ORDER BY user.name, account_role.name ASC;");			
 			while ( rs.next() ) {				
 	            	User u = new User();
 	            	u.account_id = rs.getString("user.account_id");

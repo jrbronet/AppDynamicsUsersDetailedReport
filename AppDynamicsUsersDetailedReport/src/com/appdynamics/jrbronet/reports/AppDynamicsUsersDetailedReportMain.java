@@ -6,9 +6,6 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
-// call mail or mutt to send the email and attachment.
-// mutt -s "Test mail" -a /tmp/dbagent-3.9.0.0.zip  jose.bronet@appdynamics.com < ./msg.txt
-
 public class AppDynamicsUsersDetailedReportMain {
 
 	public static void main(String[] args) {

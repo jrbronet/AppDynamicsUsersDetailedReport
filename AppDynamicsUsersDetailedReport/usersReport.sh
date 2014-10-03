@@ -21,4 +21,4 @@ done
 
 mutt -s "AppDynamics Users Daily Report" -a users.csv roles.csv groups.csv -- $EMAILS < msg.txt
 
-rm -f msg.txt users.csv groups.csv roles.csv
+rm -f msg.txt users.csv groups.csv roles.csv 
